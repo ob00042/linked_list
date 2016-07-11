@@ -6,8 +6,8 @@ module LinkedList
   class List
 
   	def initialize
-  	  @head = nil
-  	  @tail = nil
+  	  @head = Node.new
+  	  @tail = Node.new
   	  @size = 0
   	end
 
@@ -94,6 +94,14 @@ module LinkedList
   	  	print "( #{node.value} ) -> "
   	  	i += 1
   	  end
+  	end
+
+  	def insert_at(index, value)
+  	  self.at(index - 1).next_node = Node.new(value, self.at(index - 1).next_node)
+  	end
+
+  	def remove_at(index)
+  	  self.at(index - 1).next_node = self.at(index).next_node
   	end
 
   end
